@@ -12,25 +12,25 @@ public class MainActivity extends AppCompatActivity {
     private TextView inputField;
 
     private int[] numButtonsId = {
-            R.id.zero,
-            R.id.one,
-            R.id.two,
-            R.id.three,
-            R.id.four,
-            R.id.five,
-            R.id.six,
-            R.id.seven,
-            R.id.eight,
-            R.id.nine
+            R.id.main_activity__zero,
+            R.id.main_activity__one,
+            R.id.main_activity__two,
+            R.id.main_activity__three,
+            R.id.main_activity__four,
+            R.id.main_activity__five,
+            R.id.main_activity__six,
+            R.id.main_activity__seven,
+            R.id.main_activity__eight,
+            R.id.main_activity__nine
     };
 
     private int[] actionButtonsId = {
-            R.id.plus,
-            R.id.minus,
-            R.id.multiply,
-            R.id.divide,
-            R.id.equals,
-            R.id.clear
+            R.id.main_activity__plus,
+            R.id.main_activity__minus,
+            R.id.main_activity__multiply,
+            R.id.main_activity__divide,
+            R.id.main_activity__equals,
+            R.id.main_activity__resetbutton
     };
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         calculator = new Calculator();
-        inputField = findViewById(R.id.numbersField);
+        inputField = findViewById(R.id.main_activity__textfield);
 
         View.OnClickListener numberButtonClickListener = new View.OnClickListener() {
             @Override

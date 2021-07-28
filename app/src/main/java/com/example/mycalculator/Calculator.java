@@ -31,35 +31,35 @@ public class Calculator {
             }
 
             switch(id){
-                case R.id.zero:
+                case R.id.main_activity__zero:
                     if(input.length() > 0)
                         input.append("0");
                     break;
-                case R.id.one:
+                case R.id.main_activity__one:
                     input.append("1");
                     break;
-                case R.id.two:
+                case R.id.main_activity__two:
                     input.append("2");
                     break;
-                case R.id.three:
+                case R.id.main_activity__three:
                     input.append("3");
                     break;
-                case R.id.four:
+                case R.id.main_activity__four:
                     input.append("4");
                     break;
-                case R.id.five:
+                case R.id.main_activity__five:
                     input.append("5");
                     break;
-                case R.id.six:
+                case R.id.main_activity__six:
                     input.append("6");
                     break;
-                case R.id.seven:
+                case R.id.main_activity__seven:
                     input.append("7");
                     break;
-                case R.id.eight:
+                case R.id.main_activity__eight:
                     input.append("8");
                     break;
-                case R.id.nine:
+                case R.id.main_activity__nine:
                     input.append("9");
                     break;
             }
@@ -67,26 +67,26 @@ public class Calculator {
     }
 
     public void onActionPressed(int id) {
-        if (id == R.id.equals && input.length() > 0) {
+        if (id == R.id.main_activity__equals && input.length() > 0) {
             secondArg = Integer.parseInt(input.toString());
             input.setLength(0);
             state = calcState.SHOW_RESULT;
 
             switch (actionId) {
-                case R.id.plus:
+                case R.id.main_activity__plus:
                     input.append(firstArg + secondArg);
                     break;
-                case R.id.minus:
+                case R.id.main_activity__minus:
                     input.append(firstArg - secondArg);
                     break;
-                case R.id.multiply:
+                case R.id.main_activity__multiply:
                     input.append(firstArg * secondArg);
                     break;
-                case R.id.divide:
+                case R.id.main_activity__divide:
                     input.append(firstArg / secondArg);
                     break;
             }
-        } else if (id == R.id.clear) {
+        } else if (id == R.id.main_activity__resetbutton) {
                 input.setLength(0);
                 state = calcState.FIRST_ARG_INPUT;
                 actionId = 0;
