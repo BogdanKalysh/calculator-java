@@ -10,33 +10,32 @@
     <TextView
         android:id="@+id/main_activity__textfield"
 
-        android:layout_height="200dp"
         android:layout_width="0dp"
-        android:text="0"
-        android:textSize="50sp"
+        android:layout_height="200dp"
+        android:background="@color/purple_200"
         android:gravity="end"
         android:paddingEnd="10dp"
+        android:text="0"
+
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:background="@color/purple_200"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/main_activity__esc"
 
         android:layout_height="50dp"
-        android:layout_width="60dp"
+        android:layout_width="50dp"
         android:text="esc"
-        android:textSize="12sp"
-        android:layout_margin="8dp"
+        android:textSize="8sp"
 
         android:background="@color/teal_200"
 
-        app:layout_constraintBottom_toBottomOf="@id/main_activity__textfield"
-        app:layout_constraintEnd_toEndOf="@id/main_activity__textfield"
+        app:layout_constraintTop_toTopOf="@id/main_activity__resetbutton"
+        app:layout_constraintStart_toStartOf="@id/main_activity__eight"
         />
 
     <Button
@@ -203,7 +202,7 @@
 
         android:background="@color/teal_200"
 
-        app:layout_constraintTop_toTopOf="@id/main_activity__resetbutton"
+        app:layout_constraintTop_toTopOf="@id/main_activity__esc"
         app:layout_constraintStart_toStartOf="@id/main_activity__nine"
 
         />
