@@ -15,14 +15,25 @@
         android:background="@color/purple_200"
         android:gravity="end"
         android:paddingEnd="10dp"
-        android:text="0"
 
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_activity__result"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/main_activity__textfield" />
 
     <Button
         android:id="@+id/main_activity__esc"
@@ -44,7 +55,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="C"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -61,7 +72,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="7"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -79,7 +90,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="4"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -96,7 +107,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="1"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -114,7 +125,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="8"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -131,7 +142,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="5"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -147,7 +158,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="2"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -166,7 +177,7 @@
         android:text="0"
 
 
-        android:textSize="12sp"
+        android:textSize="20sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/main_activity__two"
@@ -180,7 +191,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="9"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -197,7 +208,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="%"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -213,7 +224,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="6"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -229,7 +240,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="3"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -245,7 +256,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="."
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -261,7 +272,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="/"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -276,7 +287,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="*"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -292,7 +303,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="-"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -307,7 +318,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="+"
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
@@ -322,7 +333,7 @@
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:text="="
-        android:textSize="12sp"
+        android:textSize="20sp"
 
 
         android:background="@color/teal_200"
