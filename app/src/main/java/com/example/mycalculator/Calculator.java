@@ -1,113 +1,118 @@
 package com.example.mycalculator;
 
-import android.view.View;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Calculator {
 
-    private enum CalcState{
+    private enum CalcState {
         FIRST_ARG_INPUT,
+        ACTION_INPUT,
         SECOND_ARG_INPUT,
         SHOW_RESULT
     }
-    private final ArrayList<Character> actionSymbols = new ArrayList<Character>(
-            Arrays.asList('+','-','*','/')
-    );
+    public enum Action {
+        PLUS,
+        MINUS,
+        MULTIPLY,
+        DIVIDE,
+        DIVISION_REMINDER,
+        NONE
+    }
 
     private int firstArg, secondArg, result;
-    private char action;
+    private Action action;
     CalcState state;
 
     public Calculator() {
         state = CalcState.FIRST_ARG_INPUT;
-        action = ' ';
+        action = Action.NONE;
     }
 
-    public String getResult() {
+    public int getResult() {
+        return result;
+    }
+    
+    public int getFirstArg() {
+        return firstArg;
+    }
+    
+    public int getSecondArg() {
+        return secondArg;
+    }
+    
+    public Action getAction() {
+        return action;
+    }
 
-        System.out.println("\n\n" + Integer.toString(firstArg) + " ----- " + Integer.toString(secondArg) + "\n\n\n");
+    public void reset() {
+        state = CalcState.FIRST_ARG_INPUT;
+        action = Action.NONE;
+        firstArg = secondArg = result = 0;
+    }
 
-        if (state == CalcState.FIRST_ARG_INPUT) {
-            return "";
-        } else if (state == CalcState.SECOND_ARG_INPUT) {
-            switch (action) {
-                case '+':
-                    return Integer.toString(firstArg + secondArg);
-                case '-':
-                    return Integer.toString(firstArg - secondArg);
-                case '*':
-                    return Integer.toString(firstArg * secondArg);
-                case '/':
-                    if (secondArg == 0)
-                        return "";
-                    return Integer.toString(firstArg / secondArg);
-            }
-        } else {
-            return Integer.toString(result);
+    public void endComputition() {
+        if(state == CalcState.SECOND_ARG_INPUT){
+            firstArg = result;
+            result = secondArg = 0;
+            state = CalcState.SHOW_RESULT;
         }
-
-        return "Error";
     }
 
-    public boolean addNumber(int num) {
+    public boolean compute() {
+        if (state == CalcState.SECOND_ARG_INPUT && secondArg != 0) {
+            switch (action) {
+                case PLUS:
+                    result = firstArg + secondArg;
+                    break;
+                case MINUS:
+                    result = firstArg - secondArg;
+                    break;
+                case MULTIPLY:
+                    result = firstArg * secondArg;
+                    break;
+                case DIVIDE:
+                    result = firstArg / secondArg;
+                    break;
+                case DIVISION_REMINDER:
+                    result = firstArg % secondArg;
+                    break;
+                case NONE:
+                    result = firstArg;
+                    break;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addDigit(int num) {
         int lim = 999999999;
 
         if (state == CalcState.FIRST_ARG_INPUT && firstArg < lim && (firstArg != 0 || num != 0)) {
             firstArg = (firstArg * 10) + num;
+            result = firstArg;
             return true;
         } else if (state == CalcState.SECOND_ARG_INPUT && secondArg < lim && (secondArg != 0 || num != 0)) {
             secondArg = (secondArg * 10) + num;
+            compute();
+            return true;
+        } else if (state == CalcState.ACTION_INPUT && (secondArg != 0 || num != 0)) {
+            state = CalcState.SECOND_ARG_INPUT;
+            secondArg = num;
+            compute();
             return true;
         } else if (state == CalcState.SHOW_RESULT) {
-            firstArg = num;
+            reset();
+            result = firstArg = num;
             return true;
         }
-
         return false;
     }
 
-    public boolean addAction(char act) {
-
-        if(act == 'C') { //reset calculator
-            firstArg = secondArg = 0;
-            action = ' ';
-            state = CalcState.FIRST_ARG_INPUT;
-            return true;
-        } else if (state == CalcState.FIRST_ARG_INPUT && actionSymbols.contains(act)) { //entering first arg and adding action
+    public boolean addAction(Action act) {
+        if(state == CalcState.FIRST_ARG_INPUT || state == CalcState.ACTION_INPUT || state == CalcState.SHOW_RESULT) {
+            state = CalcState.ACTION_INPUT;
             action = act;
-            state = CalcState.SECOND_ARG_INPUT;
-            return true;
-        }  else if (state == CalcState.SECOND_ARG_INPUT && act == '=') { //entering second arg and want result
-            state = CalcState.SHOW_RESULT;
-            switch (action) {
-                case '+':
-                    result = firstArg + secondArg;
-                    break;
-                case '-':
-                    result = firstArg - secondArg;
-                    break;
-                case '*':
-                    result = firstArg * secondArg;
-                    break;
-                case '/':
-                    if (secondArg == 0)
-                        return false;
-                    result = firstArg / secondArg;
-                    break;
-            }
-            firstArg = secondArg = 0;
-            action = ' ';
-            return true;
-        } else if (state == CalcState.SHOW_RESULT && actionSymbols.contains(act)) { // got result and want to work with it
-            firstArg = result;
-            action = act;
-            state = CalcState.SECOND_ARG_INPUT;
             return true;
         }
-
         return false;
-
     }
 }
