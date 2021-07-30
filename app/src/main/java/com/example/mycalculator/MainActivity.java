@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     
                     if (calculator.addAction(action)) {
                         inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
+                        resultField.setText(Integer.toString(calculator.getResult()));
                     }
                 }
             }

@@ -66,9 +66,12 @@ public class Calculator {
             state = CalcState.FIRST_ARG_INPUT;
         } else if (state == CalcState.SECOND_ARG_INPUT && secondArg != 0) {
             secondArg /= 10;
-            if(secondArg == 0)
+            if(secondArg == 0) {
                 state = CalcState.ACTION_INPUT;
-            compute();
+                result = firstArg;
+            } else {
+                compute();
+            }
         } else {
             firstArg = result = 0;
             state = CalcState.FIRST_ARG_INPUT;
