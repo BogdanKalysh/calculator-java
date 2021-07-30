@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="@id/main_activity__textfield" />
 
     <Button
-        android:id="@+id/main_activity__esc"
+        android:id="@+id/main_activity__erase"
 
         android:layout_height="50dp"
         android:layout_width="50dp"
@@ -214,7 +214,7 @@
 
         android:background="@color/teal_200"
 
-        app:layout_constraintTop_toTopOf="@id/main_activity__esc"
+        app:layout_constraintTop_toTopOf="@id/main_activity__erase"
         app:layout_constraintStart_toStartOf="@id/main_activity__nine"
 
         />

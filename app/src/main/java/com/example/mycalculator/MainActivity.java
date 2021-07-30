@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
                     R.id.main_activity__divide,
                     R.id.main_activity__divisionReminder,
                     R.id.main_activity__equals,
-                    R.id.main_activity__resetbutton)
+                    R.id.main_activity__resetbutton,
+                    R.id.main_activity__erase)
     );
     private ArrayList<Calculator.Action> ActionSymbols = new ArrayList<Calculator.Action>(
             Arrays.asList(Calculator.Action.PLUS,
@@ -107,9 +108,13 @@ public class MainActivity extends AppCompatActivity {
                 } else if (v.getId() == R.id.main_activity__equals) {
                     if (calculator.compute()) {
                         inputField.setText(Integer.toString(calculator.getResult()));
-                        resultField.setText("");
+                        resultField.setText(Integer.toString(calculator.getResult()));
                         calculator.endComputition();
                     }
+                } else if(v.getId() == R.id.main_activity__erase) {
+                    calculator.undoLastAction();
+                    inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
+                    resultField.setText(Integer.toString(calculator.getResult()));
                 } else {
                     Calculator.Action action = ActionSymbols.get(actionButtonsId.indexOf(v.getId()));
                     

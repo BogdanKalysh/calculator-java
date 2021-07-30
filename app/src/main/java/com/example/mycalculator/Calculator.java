@@ -52,7 +52,26 @@ public class Calculator {
         if(state == CalcState.SECOND_ARG_INPUT){
             firstArg = result;
             result = secondArg = 0;
+            action = Action.NONE;
             state = CalcState.SHOW_RESULT;
+        }
+    }
+
+    public void undoLastAction() {
+        if (state == CalcState.FIRST_ARG_INPUT && firstArg != 0) {
+            firstArg /= 10;
+            result = firstArg;
+        } else if (state == CalcState.ACTION_INPUT) {
+            action = Action.NONE;
+            state = CalcState.FIRST_ARG_INPUT;
+        } else if (state == CalcState.SECOND_ARG_INPUT && secondArg != 0) {
+            secondArg /= 10;
+            if(secondArg == 0)
+                state = CalcState.ACTION_INPUT;
+            compute();
+        } else {
+            firstArg = result = 0;
+            state = CalcState.FIRST_ARG_INPUT;
         }
     }
 
@@ -84,7 +103,7 @@ public class Calculator {
     }
 
     public boolean addDigit(int num) {
-        int lim = 999999999;
+        int lim = 9999999;
 
         if (state == CalcState.FIRST_ARG_INPUT && firstArg < lim && (firstArg != 0 || num != 0)) {
             firstArg = (firstArg * 10) + num;
