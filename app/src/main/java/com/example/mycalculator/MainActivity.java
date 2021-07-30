@@ -8,13 +8,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Calculator calculator;
     private TextView inputField, resultField;
 
-    private ArrayList<Integer> numButtonsId = new ArrayList<Integer>(
+    private List<Integer> numButtonsId = new ArrayList<Integer>(
             Arrays.asList( R.id.main_activity__zero,
                     R.id.main_activity__one,
                     R.id.main_activity__two,
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                     R.id.main_activity__eight,
                     R.id.main_activity__nine)
     );
-    private ArrayList<Integer> actionButtonsId = new ArrayList<Integer>(
+    private List<Integer> actionButtonsId = new ArrayList<Integer>(
             Arrays.asList(R.id.main_activity__plus,
                     R.id.main_activity__minus,
                     R.id.main_activity__multiply,
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     R.id.main_activity__resetbutton,
                     R.id.main_activity__erase)
     );
-    private ArrayList<Calculator.Action> ActionSymbols = new ArrayList<Calculator.Action>(
+    private List<Calculator.Action> ActionSymbols = new ArrayList<Calculator.Action>(
             Arrays.asList(Calculator.Action.PLUS,
                     Calculator.Action.MINUS,
                     Calculator.Action.MULTIPLY,
@@ -45,36 +46,13 @@ public class MainActivity extends AppCompatActivity {
     );
     
     private String buildExpression(int firstArg, Calculator.Action action, int secondArg) {
-        if (secondArg != 0) {
-            switch (action) {
-                case PLUS:
-                    return Integer.toString(firstArg) + "+" + Integer.toString(secondArg);
-                case MINUS:
-                    return Integer.toString(firstArg) + "-" + Integer.toString(secondArg);
-                case MULTIPLY:
-                    return Integer.toString(firstArg) + "*" + Integer.toString(secondArg);
-                case DIVIDE:
-                    return Integer.toString(firstArg) + "/" + Integer.toString(secondArg);
-                case DIVISION_REMINDER:
-                    return Integer.toString(firstArg) + "%" + Integer.toString(secondArg);
-            }
-        } else {
-            switch (action) {
-                case PLUS:
-                    return Integer.toString(firstArg) + "+";
-                case MINUS:
-                    return Integer.toString(firstArg) + "-";
-                case MULTIPLY:
-                    return Integer.toString(firstArg) + "*";
-                case DIVIDE:
-                    return Integer.toString(firstArg) + "/";
-                case DIVISION_REMINDER:
-                    return Integer.toString(firstArg) + "%";
-                case NONE:
-                    return Integer.toString(firstArg);
-            }
-        }
-        return "";
+        StringBuilder expression = new StringBuilder()
+                .append(firstArg)
+                .append(action.str);
+        if (secondArg != 0)
+            expression.append(secondArg);
+
+        return expression.toString();
     }
 
     @Override
@@ -91,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int digit = numButtonsId.indexOf(v.getId());
 
-                if (calculator.addDigit(digit)) {
-                    inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
-                    resultField.setText(Integer.toString(calculator.getResult()));
-                }
+                calculator.addDigit(digit);
+
+                inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
+                resultField.setText(Integer.toString(calculator.getResult()));
             }
         };
 
@@ -103,26 +81,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(v.getId() == R.id.main_activity__resetbutton) {
                     calculator.reset();
-                    inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
-                    resultField.setText("");
                 } else if (v.getId() == R.id.main_activity__equals) {
-                    if (calculator.compute()) {
-                        inputField.setText(Integer.toString(calculator.getResult()));
-                        resultField.setText(Integer.toString(calculator.getResult()));
-                        calculator.endComputition();
-                    }
+                    calculator.finish();
                 } else if(v.getId() == R.id.main_activity__erase) {
                     calculator.undoLastAction();
-                    inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
-                    resultField.setText(Integer.toString(calculator.getResult()));
                 } else {
                     Calculator.Action action = ActionSymbols.get(actionButtonsId.indexOf(v.getId()));
-                    
-                    if (calculator.addAction(action)) {
-                        inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
-                        resultField.setText(Integer.toString(calculator.getResult()));
-                    }
+                    calculator.addAction(action);
                 }
+
+                inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
+                resultField.setText(Integer.toString(calculator.getResult()));
             }
         };
 

@@ -9,12 +9,18 @@ public class Calculator {
         SHOW_RESULT
     }
     public enum Action {
-        PLUS,
-        MINUS,
-        MULTIPLY,
-        DIVIDE,
-        DIVISION_REMINDER,
-        NONE
+        PLUS("+"),
+        MINUS("-"),
+        MULTIPLY("*"),
+        DIVIDE("/"),
+        DIVISION_REMINDER("%"),
+        NONE("");
+
+        public String str;
+
+        Action(String str) {
+            this.str = str;
+        }
     }
 
     private int firstArg, secondArg, result;
@@ -48,13 +54,11 @@ public class Calculator {
         firstArg = secondArg = result = 0;
     }
 
-    public void endComputition() {
-        if(state == CalcState.SECOND_ARG_INPUT){
-            firstArg = result;
-            result = secondArg = 0;
-            action = Action.NONE;
-            state = CalcState.SHOW_RESULT;
-        }
+    public void finish() {
+        firstArg = result;
+        secondArg = 0;
+        action = Action.NONE;
+        state = CalcState.SHOW_RESULT;
     }
 
     public void undoLastAction() {
@@ -78,31 +82,27 @@ public class Calculator {
         }
     }
 
-    public boolean compute() {
-        if (state == CalcState.SECOND_ARG_INPUT && secondArg != 0) {
-            switch (action) {
-                case PLUS:
-                    result = firstArg + secondArg;
-                    break;
-                case MINUS:
-                    result = firstArg - secondArg;
-                    break;
-                case MULTIPLY:
-                    result = firstArg * secondArg;
-                    break;
-                case DIVIDE:
-                    result = firstArg / secondArg;
-                    break;
-                case DIVISION_REMINDER:
-                    result = firstArg % secondArg;
-                    break;
-                case NONE:
-                    result = firstArg;
-                    break;
-            }
-            return true;
+    private void compute() {
+        switch (action) {
+            case PLUS:
+                result = firstArg + secondArg;
+                break;
+            case MINUS:
+                result = firstArg - secondArg;
+                break;
+            case MULTIPLY:
+                result = firstArg * secondArg;
+                break;
+            case DIVIDE:
+                result = firstArg / secondArg;
+                break;
+            case DIVISION_REMINDER:
+                result = firstArg % secondArg;
+                break;
+            case NONE:
+                result = firstArg;
+                break;
         }
-        return false;
     }
 
     public boolean addDigit(int num) {
