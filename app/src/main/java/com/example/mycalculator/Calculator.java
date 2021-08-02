@@ -4,8 +4,10 @@ public class Calculator {
 
     private enum CalcState {
         FIRST_ARG_INPUT,
+        FIRST_ARG_DOUBLE_INPUT,
         ACTION_INPUT,
         SECOND_ARG_INPUT,
+        SECOND_ARG_DOUBLE_INPUT,
         SHOW_RESULT
     }
     public enum Action {
@@ -23,7 +25,7 @@ public class Calculator {
         }
     }
 
-    private int firstArg, secondArg, result;
+    private double firstArg, secondArg, result;
     private Action action;
     CalcState state;
 
@@ -32,15 +34,15 @@ public class Calculator {
         action = Action.NONE;
     }
 
-    public int getResult() {
+    public double getResult() {
         return result;
     }
     
-    public int getFirstArg() {
+    public double getFirstArg() {
         return firstArg;
     }
     
-    public int getSecondArg() {
+    public double getSecondArg() {
         return secondArg;
     }
     
