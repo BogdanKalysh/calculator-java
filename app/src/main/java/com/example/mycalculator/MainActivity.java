@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final DecimalFormat numFormat = new DecimalFormat("0.########");
     private Calculator calculator;
     private TextView inputField, resultField;
 
@@ -37,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
                     R.id.main_activity__divisionReminder,
                     R.id.main_activity__equals,
                     R.id.main_activity__resetbutton,
-                    R.id.main_activity__dot,
                     R.id.main_activity__erase)
     );
     private List<Calculator.Action> ActionSymbols = new ArrayList<Calculator.Action>(
@@ -47,14 +44,13 @@ public class MainActivity extends AppCompatActivity {
                     Calculator.Action.DIVIDE,
                     Calculator.Action.DIVISION_REMINDER)
     );
-    
-    private String buildExpression(double firstArg, Calculator.Action action, double secondArg) {
-        StringBuilder expression = new StringBuilder()
-        .append(numFormat.format(firstArg))
-        .append(action.str);
 
+    private String buildExpression(int firstArg, Calculator.Action action, int secondArg) {
+        StringBuilder expression = new StringBuilder()
+                .append(firstArg)
+                .append(action.str);
         if (secondArg != 0)
-            expression.append(numFormat.format(secondArg));
+            expression.append(secondArg);
 
         return expression.toString();
     }
@@ -76,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 calculator.addDigit(digit);
 
                 inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
-                resultField.setText(numFormat.format(calculator.getResult()));
+                resultField.setText(Integer.toString(calculator.getResult()));
             }
         };
 
@@ -89,15 +85,13 @@ public class MainActivity extends AppCompatActivity {
                     calculator.finish();
                 } else if(v.getId() == R.id.main_activity__erase) {
                     calculator.undoLastAction();
-                } else if (v.getId() == R.id.main_activity__dot) {
-                    calculator.makeDouble();
                 } else {
                     Calculator.Action action = ActionSymbols.get(actionButtonsId.indexOf(v.getId()));
                     calculator.addAction(action);
                 }
 
                 inputField.setText(buildExpression(calculator.getFirstArg(), calculator.getAction(), calculator.getSecondArg()));
-                resultField.setText(numFormat.format(calculator.getResult()));
+                resultField.setText(Integer.toString(calculator.getResult()));
             }
         };
 

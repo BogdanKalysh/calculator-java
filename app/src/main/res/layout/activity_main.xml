@@ -252,22 +252,6 @@
         />
 
     <Button
-        android:id="@+id/main_activity__dot"
-
-        android:layout_height="50dp"
-        android:layout_width="50dp"
-        android:text="."
-        android:textSize="20sp"
-
-
-        android:background="@color/teal_200"
-
-        app:layout_constraintTop_toTopOf="@id/main_activity__zero"
-        app:layout_constraintStart_toStartOf="@id/main_activity__three"
-
-        />
-
-    <Button
         android:id="@+id/main_activity__divide"
 
         android:layout_height="50dp"
@@ -331,17 +315,17 @@
     <Button
         android:id="@+id/main_activity__equals"
 
-        android:layout_height="50dp"
         android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/teal_200"
         android:text="="
+
+
         android:textSize="20sp"
 
-
-        android:background="@color/teal_200"
-
-        app:layout_constraintTop_toTopOf="@id/main_activity__dot"
         app:layout_constraintStart_toStartOf="@id/main_activity__plus"
+        app:layout_constraintTop_toTopOf="@id/main_activity__zero"
 
-        />
+        tools:layout_editor_absoluteY="711dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

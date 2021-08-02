@@ -4,10 +4,8 @@ public class Calculator {
 
     private enum CalcState {
         FIRST_ARG_INPUT,
-        FIRST_ARG_DOUBLE_INPUT,
         ACTION_INPUT,
         SECOND_ARG_INPUT,
-        SECOND_ARG_DOUBLE_INPUT,
         SHOW_RESULT
     }
     public enum Action {
@@ -25,7 +23,7 @@ public class Calculator {
         }
     }
 
-    private double firstArg, secondArg, result;
+    private int firstArg, secondArg, result;
     private Action action;
     CalcState state;
 
@@ -34,18 +32,18 @@ public class Calculator {
         action = Action.NONE;
     }
 
-    public double getResult() {
+    public int getResult() {
         return result;
     }
-    
-    public double getFirstArg() {
+
+    public int getFirstArg() {
         return firstArg;
     }
-    
-    public double getSecondArg() {
+
+    public int getSecondArg() {
         return secondArg;
     }
-    
+
     public Action getAction() {
         return action;
     }
@@ -111,10 +109,14 @@ public class Calculator {
         int lim = 9999999;
 
         if (state == CalcState.FIRST_ARG_INPUT && firstArg < lim && (firstArg != 0 || num != 0)) {
+            if(firstArg < 0)
+                num *= -1;
             firstArg = (firstArg * 10) + num;
             result = firstArg;
             return true;
         } else if (state == CalcState.SECOND_ARG_INPUT && secondArg < lim && (secondArg != 0 || num != 0)) {
+            if(secondArg < 0)
+                num *= -1;
             secondArg = (secondArg * 10) + num;
             compute();
             return true;
@@ -131,12 +133,14 @@ public class Calculator {
         return false;
     }
 
-    public boolean addAction(Action act) {
-        if(state == CalcState.FIRST_ARG_INPUT || state == CalcState.ACTION_INPUT || state == CalcState.SHOW_RESULT) {
-            state = CalcState.ACTION_INPUT;
-            action = act;
-            return true;
+    public void addAction(Action act) {
+        if(state == CalcState.SECOND_ARG_INPUT) {
+            compute();
+            firstArg = result;
+            secondArg = 0;
         }
-        return false;
+
+        state = CalcState.ACTION_INPUT;
+        action = act;
     }
 }
