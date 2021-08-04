@@ -39,8 +39,9 @@
 
     <Button style = "@style/CalcButton"
         android:id="@+id/main_activity__resetbutton"
-        
         android:text="C"
+        android:textSize="40sp"
+
 
         app:layout_constraintTop_toBottomOf="@id/main_activity__textfield"
         app:layout_constraintStart_toStartOf="@id/main_activity__seven"
@@ -51,7 +52,6 @@
 
     <Button style = "@style/CalcButton"
         android:id="@+id/main_activity__seven"
-        
         android:text="7"
 
         app:layout_constraintTop_toBottomOf="@id/main_activity__resetbutton"
@@ -63,7 +63,6 @@
 
     <Button style = "@style/CalcButton"
         android:id="@+id/main_activity__four"
-        
         android:text="4"
 
         app:layout_constraintTop_toBottomOf="@id/main_activity__seven"
@@ -136,6 +135,8 @@
     <Button style = "@style/CalcButton"
         android:id="@+id/main_activity__divisionReminder"
         android:text="%"
+        android:textSize="40sp"
+
 
         app:layout_constraintBottom_toBottomOf="@+id/main_activity__erase"
         app:layout_constraintEnd_toEndOf="@+id/main_activity__nine"
@@ -165,6 +166,7 @@
     <Button style = "@style/CalcButton"
         android:id="@+id/main_activity__divide"
         android:text="/"
+        android:textSize="40sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/main_activity__divisionReminder"
         app:layout_constraintEnd_toEndOf="@id/main_activity__multiply"
@@ -174,6 +176,7 @@
     <Button style = "@style/CalcButton"
         android:id="@+id/main_activity__multiply"
         android:text="*"
+        android:textSize="40sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/main_activity__nine"
         app:layout_constraintEnd_toEndOf="parent"
@@ -183,6 +186,7 @@
     <Button style = "@style/CalcButton"
         android:id="@+id/main_activity__minus"
         android:text="-"
+        android:textSize="40sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/main_activity__six"
         app:layout_constraintEnd_toEndOf="@id/main_activity__multiply"
@@ -192,6 +196,8 @@
     <Button style = "@style/CalcButton" 
         android:id="@+id/main_activity__plus"
         android:text="+"
+        android:textSize="40sp"
+
 
         app:layout_constraintEnd_toEndOf="@id/main_activity__minus"
         app:layout_constraintTop_toTopOf="@id/main_activity__three"
@@ -203,6 +209,7 @@
         android:id="@+id/main_activity__equals"
         android:text="="
         android:layout_width="0dp"
+        android:textSize="40sp"
 
         app:layout_constraintEnd_toEndOf="@id/main_activity__plus"
         app:layout_constraintStart_toStartOf="@id/main_activity__three"

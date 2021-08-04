@@ -9,7 +9,7 @@
     </style>
 
     <style name="InputTextStyle">
-        <item name="android:layout_height">350dp</item>
+        <item name="android:layout_height">300dp</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:gravity">end</item>
         <item name="android:textSize">50sp</item>
