@@ -10,17 +10,21 @@
     <TextView style="@style/InputTextStyle"
         android:id="@+id/main_activity__textfield"
         android:text="0"
+        android:paddingEnd="30dp"
+        android:paddingTop="50dp"
 
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView style="@style/ResultTextStyle"
         android:id="@+id/main_activity__result"
         android:text="0"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/main_activity__textfield"
+        app:layout_constraintEnd_toEndOf="@id/main_activity__textfield"
         app:layout_constraintBottom_toBottomOf="@id/main_activity__textfield" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
@@ -29,79 +33,64 @@
         android:textSize="20sp"
         android:textColor="@color/action_text"
 
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__resetbutton"
-        app:layout_constraintEnd_toEndOf="@+id/main_activity__eight"
-        app:layout_constraintStart_toStartOf="@id/main_activity__eight"
+        app:layout_constraintStart_toEndOf="@id/main_activity__resetbutton"
+        app:layout_constraintEnd_toStartOf="@id/main_activity__divisionReminder"
         app:layout_constraintTop_toTopOf="@id/main_activity__resetbutton" />
+
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__resetbutton"
         android:text="C"
         android:textColor="@color/reset_text"
 
-        app:layout_constraintTop_toBottomOf="@id/main_activity__textfield"
-        app:layout_constraintStart_toStartOf="@id/main_activity__seven"
+        app:layout_constraintEnd_toStartOf="@id/main_activity__erase"
         app:layout_constraintBottom_toTopOf="@id/main_activity__seven"
-        app:layout_constraintEnd_toEndOf="@id/main_activity__seven" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_activity__textfield" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__seven"
         android:text="7"
 
-        app:layout_constraintTop_toBottomOf="@id/main_activity__resetbutton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_activity__four"
-        app:layout_constraintEnd_toStartOf="@id/main_activity__eight"
 
-        />
+        app:layout_constraintTop_toBottomOf="@id/main_activity__resetbutton"
+        app:layout_constraintBottom_toTopOf="@id/main_activity__four"
+        app:layout_constraintStart_toStartOf="@id/main_activity__resetbutton" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__four"
         android:text="4"
 
         app:layout_constraintTop_toBottomOf="@id/main_activity__seven"
-        app:layout_constraintStart_toStartOf="@id/main_activity__seven"
         app:layout_constraintBottom_toTopOf="@id/main_activity__one"
-        app:layout_constraintEnd_toEndOf="@id/main_activity__seven"
-
-        />
+        app:layout_constraintStart_toStartOf="@id/main_activity__seven" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__one"
         android:text="1"
 
         app:layout_constraintBottom_toTopOf="@id/main_activity__zero"
-        app:layout_constraintEnd_toEndOf="@+id/main_activity__four"
-        app:layout_constraintStart_toStartOf="@id/main_activity__four"
-
-        app:layout_constraintTop_toBottomOf="@id/main_activity__four" />
+        app:layout_constraintTop_toBottomOf="@id/main_activity__four"
+        app:layout_constraintStart_toStartOf="@id/main_activity__four"/>
 
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__eight"
         android:text="8"
 
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__seven"
-        app:layout_constraintEnd_toStartOf="@id/main_activity__nine"
-        app:layout_constraintStart_toEndOf="@id/main_activity__seven"
+        app:layout_constraintStart_toStartOf="@id/main_activity__erase"
         app:layout_constraintTop_toTopOf="@id/main_activity__seven" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__five"
         android:text="5"
 
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__four"
-        app:layout_constraintEnd_toEndOf="@+id/main_activity__eight"
-
-        app:layout_constraintStart_toStartOf="@id/main_activity__eight"
-        app:layout_constraintTop_toTopOf="@id/main_activity__four" />
+        app:layout_constraintTop_toTopOf="@id/main_activity__four"
+        app:layout_constraintStart_toStartOf="@id/main_activity__eight" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__two"
         android:text="2"
-
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__one"
-        app:layout_constraintEnd_toEndOf="@+id/main_activity__five"
 
         app:layout_constraintStart_toStartOf="@id/main_activity__five"
         app:layout_constraintTop_toTopOf="@id/main_activity__one" />
@@ -111,19 +100,14 @@
         android:text="0"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/main_activity__two"
         app:layout_constraintStart_toStartOf="@id/main_activity__two"
-
         app:layout_constraintTop_toBottomOf="@+id/main_activity__one" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__nine"
         android:text="9"
 
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__eight"
-        app:layout_constraintEnd_toStartOf="@id/main_activity__multiply"
-        app:layout_constraintStart_toEndOf="@id/main_activity__eight"
-
+        app:layout_constraintStart_toStartOf="@id/main_activity__divisionReminder"
         app:layout_constraintTop_toTopOf="@id/main_activity__eight" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
@@ -132,17 +116,14 @@
         android:textSize="40sp"
         android:textColor="@color/action_text"
 
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__erase"
-        app:layout_constraintEnd_toEndOf="@+id/main_activity__nine"
-        app:layout_constraintStart_toStartOf="@id/main_activity__nine"
+        app:layout_constraintStart_toEndOf="@id/main_activity__erase"
+        app:layout_constraintEnd_toStartOf="@id/main_activity__divide"
         app:layout_constraintTop_toTopOf="@id/main_activity__erase" />
+
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__six"
         android:text="6"
-
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__five"
-        app:layout_constraintEnd_toEndOf="@+id/main_activity__nine"
 
         app:layout_constraintStart_toStartOf="@id/main_activity__nine"
         app:layout_constraintTop_toTopOf="@id/main_activity__five" />
@@ -150,9 +131,6 @@
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__three"
         android:text="3"
-
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__two"
-        app:layout_constraintEnd_toEndOf="@+id/main_activity__six"
 
         app:layout_constraintStart_toStartOf="@id/main_activity__six"
         app:layout_constraintTop_toTopOf="@id/main_activity__two" />
@@ -163,9 +141,8 @@
         android:textSize="40sp"
         android:textColor="@color/action_text"
 
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__divisionReminder"
-        app:layout_constraintEnd_toEndOf="@id/main_activity__multiply"
-        app:layout_constraintStart_toStartOf="@id/main_activity__multiply"
+        app:layout_constraintStart_toEndOf="@id/main_activity__divisionReminder"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/main_activity__divisionReminder" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
@@ -174,9 +151,7 @@
         android:textSize="40sp"
         android:textColor="@color/action_text"
 
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__nine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_activity__nine"
+        app:layout_constraintStart_toStartOf="@id/main_activity__divide"
         app:layout_constraintTop_toTopOf="@id/main_activity__nine" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
@@ -185,8 +160,6 @@
         android:textSize="40sp"
         android:textColor="@color/action_text"
 
-        app:layout_constraintBottom_toBottomOf="@+id/main_activity__six"
-        app:layout_constraintEnd_toEndOf="@id/main_activity__multiply"
         app:layout_constraintStart_toStartOf="@id/main_activity__multiply"
         app:layout_constraintTop_toTopOf="@id/main_activity__six" />
 
@@ -196,12 +169,8 @@
         android:textSize="40sp"
         android:textColor="@color/action_text"
 
-
-        app:layout_constraintEnd_toEndOf="@id/main_activity__minus"
         app:layout_constraintTop_toTopOf="@id/main_activity__three"
-        app:layout_constraintStart_toStartOf="@id/main_activity__minus"
-        app:layout_constraintBottom_toBottomOf="@id/main_activity__three"
-        />
+        app:layout_constraintStart_toStartOf="@id/main_activity__minus" />
 
     <androidx.appcompat.widget.AppCompatButton style = "@style/CalcButton"
         android:id="@+id/main_activity__equals"
@@ -213,8 +182,6 @@
 
         app:layout_constraintEnd_toEndOf="@id/main_activity__plus"
         app:layout_constraintStart_toStartOf="@id/main_activity__three"
-        app:layout_constraintTop_toTopOf="@id/main_activity__zero"
-        app:layout_constraintBottom_toBottomOf="@id/main_activity__zero"
-        />
+        app:layout_constraintTop_toTopOf="@id/main_activity__zero" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,11 +9,11 @@
     <color name="orange">#FFF1661B</color>
     <color name="semi_transparent">#50000000</color>
 
-    <color name="input_field">@color/light_green</color>
+    <color name="input_field">#40D500</color>
     <color name="result_field">@color/grey</color>
-    <color name="button_background">#FFF0F0F0</color>
-    <color name="button_border">#FFF0F0F0</color>
-    <color name="number_text">@color/black</color>
-    <color name="action_text">@color/dark_green</color>
+    <color name="button_background">@color/semi_transparent</color>
+    <color name="button_border">@color/grey</color>
+    <color name="number_text">@color/white</color>
+    <color name="action_text">@color/light_green</color>
     <color name="reset_text">@color/orange</color>
 </resources>
